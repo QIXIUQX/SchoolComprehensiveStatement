@@ -123,10 +123,21 @@ body {
           flex-direction: column;
           margin: 0.05rem 0;
           background-color: #fff; }
-          #app .container .general-info .average-student-info .common-student-info .common-info-title {
-            padding: 5px 0;
-            font-size: 0.28rem;
-            text-align: center; }
+          #app .container .general-info .average-student-info .common-student-info .common-student-info-header {
+            position: relative; }
+            #app .container .general-info .average-student-info .common-student-info .common-student-info-header .common-info-title {
+              padding: 5px 0;
+              font-size: 0.28rem;
+              text-align: center; }
+            #app .container .general-info .average-student-info .common-student-info .common-student-info-header .toggle-time {
+              user-select: none;
+              -webkit-user-select: none;
+              -ms-user-select: none;
+              -moz-user-select: none;
+              position: absolute;
+              right: 0.1rem;
+              top: 50%;
+              transform: translateY(-50%); }
         #app .container .general-info .average-student-info .readings-per-student {
           width: 100%;
           height: 4rem; }
@@ -143,12 +154,23 @@ body {
             height: 100%; }
         #app .container .general-info .average-student-info .readings-per-student-tab {
           margin-top: 0.2rem; }
-          #app .container .general-info .average-student-info .readings-per-student-tab .u-list .u-item {
-            display: flex;
-            padding: 0.05rem 0.1rem;
-            color: red; }
-            #app .container .general-info .average-student-info .readings-per-student-tab .u-list .u-item .item-header, #app .container .general-info .average-student-info .readings-per-student-tab .u-list .u-item .item-body {
-              flex: 1;
-              text-align: center; }
-          #app .container .general-info .average-student-info .readings-per-student-tab .u-list .item-header-wrap {
-            padding: 0.1rem 0.05rem; }
+          #app .container .general-info .average-student-info .readings-per-student-tab .x-table-list {
+            padding: 0.1rem; }
+            #app .container .general-info .average-student-info .readings-per-student-tab .x-table-list .x-header-wrap {
+              padding: 0.1rem 0;
+              display: flex; }
+              #app .container .general-info .average-student-info .readings-per-student-tab .x-table-list .x-header-wrap .x-item-header {
+                flex: 1;
+                text-align: center;
+                font-size: 0.18rem;
+                font-weight: 500; }
+            #app .container .general-info .average-student-info .readings-per-student-tab .x-table-list .x-list {
+              font-size: 0.14rem; }
+              #app .container .general-info .average-student-info .readings-per-student-tab .x-table-list .x-list .x-item {
+                padding: 0.08rem 0;
+                display: flex; }
+                #app .container .general-info .average-student-info .readings-per-student-tab .x-table-list .x-list .x-item:nth-child(odd) {
+                  background-color: #FAFAFA; }
+                #app .container .general-info .average-student-info .readings-per-student-tab .x-table-list .x-list .x-item .x-item-content {
+                  flex: 1;
+                  text-align: center; }

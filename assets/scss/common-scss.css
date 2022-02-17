@@ -89,3 +89,40 @@
   .date-picker-container .prev-month,
   .date-picker-container .next-month {
     color: #c0c4cc; }
+
+.x-switch {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 1.4rem;
+  height: 0.3rem;
+  border-radius: 0.1rem;
+  overflow: hidden;
+  cursor: pointer; }
+  .x-switch .x-switch-core {
+    position: relative;
+    width: 1.4rem;
+    height: 0.3rem;
+    background-color: #fff;
+    transition: background-color 0.2s linear;
+    border: 0.01rem solid #dbdbdb;
+    border-radius: 1rem; }
+    .x-switch .x-switch-core .x-switch-button {
+      color: #333;
+      font-size: 0.12rem;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translate(0%, -50%);
+      width: 0.7rem;
+      height: 0.3rem;
+      background-color: #ffbd39;
+      border-radius: 0.5rem;
+      transition: left 0.2s linear;
+      line-height: 0.3rem;
+      text-align: center; }
+  .x-switch .is-check {
+    transition: all 0.3s ease; }
+    .x-switch .is-check .x-switch-button {
+      left: 0.7rem;
+      transform: translate(0%, -50%); }

@@ -141,7 +141,6 @@ function examTimesCharts() {
 }
 
 
-
 window.onload = function () {
 	init()
 
@@ -153,6 +152,7 @@ window.onload = function () {
 		getInfoCategory()
 		readingsPerStudentCharts()
 		examTimesCharts()
+		getReadingsPerStudentTab()
 	}
 }
 
@@ -245,18 +245,89 @@ function getInfoCategory() {
 	});
 }
 
+/**
+ * 获取生均阅读数据表
+ */
+function getReadingsPerStudentTab() {
+	var readingStudentListEl = $(".reading-student-list")
+	var readingStudentListItemStr = ""
 
-function getReadingsPerStudentTab(){
 	$.ajax({
-	    url: "",
-	    data: {},
-	    type: "POST",
-	    async: false,
-	    dataType: "json",
-	    success: function (data) {
-	    },
-	    error: function (jqXHR, textStatus, errorThrown) {
-	        console.error("请求异常:",errorThrown,"在：",jqXHR)
-	    }
+		url: "http://localhost:3000/getReadingsPerStudentTabData",
+		data: {},
+		type: "POST",
+		async: false,
+		dataType: "json",
+		success: function (data) {
+			console.log(data);
+			$.each(data, function (i, item) {
+				readingStudentListItemStr +=
+					'	<div class="x-item">' +
+					'		<div class="x-item-content">' + dateUtils.dateFormat(item.time, "yyyy.MM.dd") + '-' + dateUtils.dateFormat(item.endTime, "yyyy.MM.dd") + '</div>' +
+					'		<div class="x-item-content">' + item.grade + '</div>' +
+					'		<div class="x-item-content">' + item.readingNum + '</div>' +
+					'		<div class="x-item-content">' + item.examNum + '</div>' +
+					'	</div>'
+
+
+			})
+			readingStudentListEl.html(readingStudentListItemStr)
+		},
+		error: function (jqXHR, textStatus, errorThrown) {
+			console.error("请求异常:", errorThrown, "在：", jqXHR)
+		}
 	});
 }
+
+
+/**
+ * switch 被点击 切换switch 状态和自定义属性的值
+ * @param _this 被点击的switch
+ */
+function switchClick(_this) {
+	var value = $(_this).attr("data-value");
+	if (value === "true") {
+		$(_this).attr("data-value", "false");
+		$(_this).children(".x-switch-core").removeClass("is-check");
+		$(_this).find(".x-switch-button").html("最近3个月");
+	} else {
+		$(_this).attr("data-value", "true");
+		$(_this).children(".x-switch-core").addClass("is-check");
+		$(_this).find(".x-switch-button").html("最近4个月");
+	}
+}
+
+$(function () {
+	/**
+	 * 渲染 Switch到页面中
+	 */
+	function renderSwitch() {
+		var xSwitchArr = $(".x-switch");
+		var switchStr = "<span class=\"x-switch-core\"><span class=\"x-switch-button\">最近4个月</span></span>";
+		for (var i = 0; i < xSwitchArr.length; i++) {
+			$(xSwitchArr[i]).html(switchStr);
+			setDefaultStyle(xSwitchArr[i]);
+		}
+
+		/**
+		 * 如果默认就是选中状态的，需要给他添加相应的类并且val的值改为：true
+		 * @param  { HTMLElement } el 需要设置样式或者取消样式的element元素
+		 */
+		function setDefaultStyle(el) {
+			var value = $(el).attr("data-value");
+			//如果默认就是true  则添加 is-check
+			if (value === "true") {
+				$(el).children(".x-switch-core").addClass("is-check");
+			}
+		}
+	}
+
+	/**
+	 * 进入页面初始化调用
+	 */
+	function init() {
+		renderSwitch();
+	}
+
+	init();
+});

@@ -3,3 +3,195 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body {
+    font-size: 0.16rem;
+}
+
+#app {
+    padding: 0 0.1rem;
+    //顶部  占位用  可删除
+    .header {
+        width: 100%;
+        height: 0.6rem;
+        background-color: pink;
+        font-size: 0.18rem;
+    }
+
+    //面包屑
+    .breadcrumb {
+        padding: 0.05rem 0;
+        font-size: 0.16rem;
+    }
+
+    //选择内容  行
+    .select-info-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 0.6rem;
+        width: 100%;
+        background-color: pink;
+
+        //左侧盒子
+        .select-info-left {
+            background-color: deepskyblue;
+            //时间选择器
+            .time-select-wrap {
+                display: flex;
+                .time-txt {
+                    font-size: 0.16rem;
+                }
+
+            }
+
+            //年级选择器
+            .grade-select-wrap {
+
+
+            }
+        }
+
+        //右侧盒子
+        .select-info-right {
+            //background-color: deeppink;
+
+            //导出与说明
+            .export-and-desc-wrap {
+                padding-right: 0.2rem;
+                color: #169bdd;
+                font-size: 0.14rem;
+
+                //说明
+                .indicator-desc {
+
+                }
+                //导出按钮
+                .export-file-btn {
+                }
+            }
+        }
+
+    }
+
+
+}
+
+//公共样式定义
+
+//输入框
+.x-input-inner {
+    width: 180px;
+    height: 40px;
+    padding: 0 15px;
+    font-size: 14px;
+    outline: none;
+    border-radius: 5px;
+    color: #606264;
+    border: 1px solid #dcdfe6;
+    transition: all 0.2s ease;
+
+    &:focus {
+        border: 1px solid #53a8ff;
+    }
+
+    &::placeholder {
+        color: #c0c4cc;
+    }
+}
+
+//日期选择器
+.date-picker-container {
+    position: absolute;
+    z-index: 999;
+    overflow: hidden;
+    width: 3.24rem;
+    height: max-content;
+    font-size: 0.16rem;
+    font-weight: 400;
+    color: #606266;
+    box-shadow: 0 0.02rem 0.12rem 0 rgba(0, 0, 0, 0.1);
+    user-select: none;
+    background-color: #fff;
+    .picker-year {
+        margin: 0.12rem;
+        display: flex;
+        height: 0.3rem;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.16rem;
+        .picker-year-left-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .picker-year-right-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .common-toggle-date-btn {
+            padding: 0 0.1rem;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            & > svg {
+                width: 0.1rem;
+                height: 0.1rem;
+                fill: #606266;
+                transition: all 0.3s ease;
+                &:hover {
+                    fill: #409eff;
+                }
+            }
+        }
+    }
+    .date-container {
+        margin: 0.15rem;
+        .picker-week {
+            display: flex;
+            font-size: 0.12rem;
+            border-bottom: 0.01rem solid #ebeef5;
+            .picker-week-item {
+                flex: 1;
+                padding: 0.05rem;
+                width: 0.31rem;
+                height: 0.31rem;
+                text-align: center;
+            }
+        }
+        .picker-days {
+            display: flex;
+            flex-wrap: wrap;
+            font-size: 0.12rem;
+            .picker-days-item {
+                padding: 0.03rem 0;
+                flex: 0 0 14.2857%;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                &:hover {
+                    color: #409eff;
+                }
+
+                .item-content {
+                    width: 0.24rem;
+                    height: 0.24rem;
+                    text-align: center;
+                    line-height: 0.24rem;
+                    transition: all ease 0.3s;
+                }
+            }
+        }
+    }
+
+    .current-date {
+        color: #409eff;
+    }
+    .prev-month,
+    .next-month {
+        color: #c0c4cc;
+    }
+}

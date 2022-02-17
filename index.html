@@ -3,15 +3,35 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.11.0/jquery.js"></script>
-	<script src="./assets/js/index.js"></script>
+	<script src="./assets/js/jquery-1.11.0.min.js"></script>
 	<script src="./assets/js/1920screen_self-adaption.js"></script>
+	<script src="./assets/js/datePicker.js"></script>
+	<script src="./assets/js/index.js"></script>
 	<link rel="stylesheet" href="./assets/scss/index.css"/>
 	<title>学校综合报表</title>
 </head>
 <body>
- <div id="app">
-	 
- </div>
+<div id="app">
+	<!--顶部  占位用  可删除-->
+	<div class="header">header 后续删除</div>
+	
+	<!--面包屑-->
+	<div class="breadcrumb">当前位置>综合报告>全校综合报表</div>
+	<div class="select-info-row">
+		<div class="select-info-left">
+			<div class="time-select-wrap">
+				<span clas="time-txt">时间</span>
+				<input type="text" onclick="datePicker(this)">
+			</div>
+			<div class="grade-select-wrap"></div>
+		</div>
+		<div class="select-info-right">
+			<div class="export-and-desc-wrap">
+				<div class="indicator-desc">指标说明</div>
+				<div class="export-file-btn">导出</div>
+			</div>
+		</div>
+	</div>
+</div>
 </body>
 </html>

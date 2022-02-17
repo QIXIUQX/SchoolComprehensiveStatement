@@ -184,11 +184,7 @@ function renderDays(year, month) {
 			"-" +
 			(tempArr[i].getMonth() + 1 < 10
 				? "0" + (tempArr[i].getMonth() + 1)
-				: tempArr[i].getMonth() + 1) +
-			"-" +
-			(tempArr[i].getDate() < 10
-				? "0" + tempArr[i].getDate()
-				: tempArr[i].getDate());
+				: tempArr[i].getMonth() + 1)
 
 		// 如果当前月份大于 此项的月份 表示是下一个时间,添加类nextMonth
 		if (month < tempArr[i].getMonth() + 1) {

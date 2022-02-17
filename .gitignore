@@ -1,7 +1,7 @@
 .DS_Store
 node_modules
 /dist
-/assets/Highcharts-9.3.2
+/assets/js/Highcharts-9.3.2
 
 
 # local env files

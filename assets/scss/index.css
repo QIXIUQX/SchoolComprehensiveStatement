@@ -130,6 +130,7 @@ body {
               font-size: 0.28rem;
               text-align: center; }
             #app .container .general-info .average-student-info .common-student-info .common-student-info-header .toggle-time {
+              display: flex;
               user-select: none;
               -webkit-user-select: none;
               -ms-user-select: none;
@@ -137,17 +138,31 @@ body {
               position: absolute;
               right: 0.1rem;
               top: 50%;
-              transform: translateY(-50%); }
+              transform: translateY(-50%);
+              height: 0.26rem;
+              border-radius: 2px;
+              border: 1px solid #eee;
+              line-height: 0.26rem;
+              cursor: pointer;
+              text-align: center; }
+              #app .container .general-info .average-student-info .common-student-info .common-student-info-header .toggle-time .toggle-item {
+                padding: 0 0.05rem;
+                width: 0.8rem;
+                height: 100%;
+                font-size: 0.13rem; }
+              #app .container .general-info .average-student-info .common-student-info .common-student-info-header .toggle-time .active-toggle-item {
+                background-color: #7cb5ec;
+                color: #fff; }
         #app .container .general-info .average-student-info .readings-per-student {
-          width: 100%;
-          height: 4rem; }
+          width: 100%; }
           #app .container .general-info .average-student-info .readings-per-student .readings-per-student-charts1 {
             flex: 1;
-            width: 100%;
-            height: 100%; }
+            width: 7rem;
+            min-height: 2rem; }
         #app .container .general-info .average-student-info .exam-times {
           margin-top: 0.2rem;
-          width: 100%; }
+          width: 100%;
+          height: 4rem; }
           #app .container .general-info .average-student-info .exam-times .exam-times-charts {
             flex: 1;
             width: 100%;

@@ -161,10 +161,13 @@
 				<div class="common-student-info readings-per-student">
 					<div class="common-student-info-header">
 						<div class="common-info-title">生均阅读量走势图</div>
-						<label onclick="switchClick(this)" class="x-switch toggle-time" data-value="true"></label>
-						
+						<!--<label onclick="switchClick(this)" class="x-switch toggle-time" data-value="true"></label>-->
+						<div class="toggle-time">
+							<div class="toggle-item item-three active-toggle-item">最近30天</div>
+							<div class="toggle-item item-four">最近四个月</div>
+						</div>
 					</div>
-					<div id="readings-per-student-charts"></div>
+					<div id="readings-per-student-charts" style="min-height:3rem;height:4rem"></div>
 				</div>
 				
 				<!--考级次数走势图-->
@@ -216,7 +219,9 @@
 			
 			</div>
 			<!--阅读信息-->
-			<div class="common-info-column"></div>
+			<div class="common-info-column reading-activity">
+			
+			</div>
 			<!--热力信息-->
 			<div class="common-info-column info-column-three"></div>
 		</div>

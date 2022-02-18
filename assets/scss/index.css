@@ -68,7 +68,7 @@ body {
       display: flex;
       width: 100%;
       height: max-content;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+      box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1); }
       #app .container .info-category-list .info-cate-item {
         flex: 1;
         display: flex;
@@ -125,11 +125,11 @@ body {
           display: flex;
           flex-direction: column;
           background-color: #fff;
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+          box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1); }
           #app .container .general-info .common-info-column .common-info-wrap .common-info-wrap-header {
             position: relative; }
             #app .container .general-info .common-info-column .common-info-wrap .common-info-wrap-header .common-info-title {
-              padding: 5px 0;
+              padding: 0.05rem 0;
               font-size: 0.28rem;
               text-align: center; }
             #app .container .general-info .common-info-column .common-info-wrap .common-info-wrap-header .toggle-time {
@@ -143,8 +143,8 @@ body {
               top: 50%;
               transform: translateY(-50%);
               height: 0.26rem;
-              border-radius: 2px;
-              border: 1px solid #eee;
+              border-radius: 0.02rem;
+              border: 0.01rem solid #eee;
               line-height: 0.26rem;
               cursor: pointer;
               text-align: center; }
@@ -166,6 +166,9 @@ body {
           width: 100%; }
         #app .container .general-info .average-student-info .readings-per-student-tab {
           margin-top: 0.2rem; }
+          #app .container .general-info .average-student-info .readings-per-student-tab .reading-student-list {
+            width: 6.8rem;
+            height: 1.4rem; }
       #app .container .general-info .reading-activity {
         display: flex;
         flex-direction: column; }
@@ -173,13 +176,31 @@ body {
           margin-top: 0.2rem; }
         #app .container .general-info .reading-activity .reading-activity-tab, #app .container .general-info .reading-activity .reading-task-tab {
           margin-top: 0.2rem; }
+        #app .container .general-info .reading-activity .reading-task-tab .reading-task-list {
+          width: 6.8rem;
+          height: 1.4rem; }
       #app .container .general-info .common-activity-list .common-activity-item {
         background-color: #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1); }
         #app .container .general-info .common-activity-list .common-activity-item .activity-hot-list-title {
           padding: 0.05rem 0;
           font-size: 0.28rem;
           text-align: center;
-          border-bottom: 1px solid #e0dddd; }
+          border-bottom: 0.01rem solid #e0dddd; }
+      #app .container .general-info .common-activity-list .activity-hot-wrap .activity-hot-list {
+        width: 3.8rem;
+        height: 1.75rem; }
       #app .container .general-info .common-activity-list .monthly-test-wrap, #app .container .general-info .common-activity-list .school-ranking-wrap {
         margin-top: 0.2rem; }
+      #app .container .general-info .common-activity-list .school-ranking-wrap .school-ranking-list {
+        width: 3.8rem;
+        height: 3.5rem; }
+
+.x-no-data {
+  padding: 0.05rem 0.2rem;
+  font-size: 0.16rem;
+  color: #999;
+  text-align: center;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none; }

@@ -108,5 +108,73 @@
       .x-table-list .x-list .x-item:nth-child(odd) {
         background-color: #FAFAFA; }
       .x-table-list .x-list .x-item .x-item-content {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
         flex: 1;
         text-align: center; }
+
+.x-month-picker-wrapper {
+  z-index: 99999;
+  background-color: #fff;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 3.22rem;
+  height: 2.48rem;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.2);
+  user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none; }
+  .x-month-picker-wrapper .x-month-picker-header {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.12rem 0.12rem 0 0.12rem;
+    padding-bottom: 0.12rem;
+    text-align: center;
+    border-bottom: 1px solid #ebeef5;
+    color: #606226; }
+    .x-month-picker-wrapper .x-month-picker-header .x-month-year-wrap {
+      flex: 1;
+      padding: 0.06rem 0; }
+    .x-month-picker-wrapper .x-month-picker-header .x-month-prev-year {
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+    .x-month-picker-wrapper .x-month-picker-header .x-month-next-year {
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+    .x-month-picker-wrapper .x-month-picker-header .common-toggle-date-btn {
+      padding: 0 0.1rem;
+      width: 0.3rem;
+      height: 100%;
+      cursor: pointer; }
+      .x-month-picker-wrapper .x-month-picker-header .common-toggle-date-btn > svg {
+        width: 0.1rem;
+        height: 0.1rem;
+        fill: #606266;
+        transition: all 0.3s ease; }
+        .x-month-picker-wrapper .x-month-picker-header .common-toggle-date-btn > svg:hover {
+          fill: #409eff; }
+  .x-month-picker-wrapper .x-month-picker-body {
+    padding: 0.12rem;
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap; }
+    .x-month-picker-wrapper .x-month-picker-body .x-month-picker-item {
+      display: flex;
+      flex: 0 0 25%;
+      padding: 8px 0; }
+      .x-month-picker-wrapper .x-month-picker-body .x-month-picker-item span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+        margin: 0 0.07rem;
+        cursor: pointer; }
+        .x-month-picker-wrapper .x-month-picker-body .x-month-picker-item span:hover {
+          color: #409eff;
+          transition: all 0.2s ease; }

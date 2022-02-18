@@ -122,7 +122,7 @@ body {
             display: flex;
             width: 100%;
             height: max-content;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
 
 
             //每一个项目
@@ -219,13 +219,13 @@ body {
                     flex-direction: column;
                     //margin: 0.05rem 0;
                     background-color: #fff;
-                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                    box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
                     //头部标签
                     .common-info-wrap-header {
                         position: relative;
                         //标题
                         .common-info-title {
-                            padding: 5px 0;
+                            padding: 0.05rem 0;
                             font-size: 0.28rem;
                             text-align: center;
                         }
@@ -243,8 +243,8 @@ body {
                             //width: 1.4rem;
                             height: 0.26rem;
                             //background-color: red;
-                            border-radius: 2px;
-                            border: 1px solid #eee;
+                            border-radius: 0.02rem;
+                            border: 0.01rem solid #eee;
                             line-height: 0.26rem;
                             cursor: pointer;
                             text-align: center;
@@ -292,6 +292,11 @@ body {
                 //生均阅读数据表
                 .readings-per-student-tab {
                     margin-top: 0.2rem;
+
+                    .reading-student-list {
+                        width: 6.8rem;
+                        height: 1.4rem;
+                    }
                 }
             }
 
@@ -303,13 +308,18 @@ body {
                 //一百二十天数据
                 .reading-activity-last-120-days {
                     margin-top: 0.2rem;
-
-
                 }
 
                 //阅读活动
                 .reading-activity-tab, .reading-task-tab {
                     margin-top: 0.2rem;
+                }
+
+                .reading-task-tab {
+                    .reading-task-list {
+                        width: 6.8rem;
+                        height: 1.4rem;
+                    }
                 }
             }
 
@@ -319,18 +329,33 @@ body {
                 //每一个活动
                 .common-activity-item {
                     background-color: #fff;
-                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                    box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
                     //活动标题
                     .activity-hot-list-title {
                         padding: 0.05rem 0;
                         font-size: 0.28rem;
                         text-align: center;
-                        border-bottom: 1px solid #e0dddd;
+                        border-bottom: 0.01rem solid #e0dddd;
                     }
                 }
 
+                .activity-hot-wrap {
+                    .activity-hot-list {
+                        width: 3.8rem;
+                        height: 1.75rem;
+                    }
+                }
+
+
                 .monthly-test-wrap, .school-ranking-wrap {
                     margin-top: 0.2rem;
+                }
+
+                .school-ranking-wrap {
+                    .school-ranking-list {
+                        width: 3.8rem;
+                        height: 3.5rem;
+                    }
                 }
 
             }
@@ -338,5 +363,15 @@ body {
     }
 }
 
+//没有数据时候显示的内容
+.x-no-data {
+    padding: 0.05rem 0.2rem;
+    font-size: 0.16rem;
+    color: #999;
+    text-align: center;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
 
 

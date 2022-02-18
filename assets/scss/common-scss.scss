@@ -213,10 +213,95 @@
 
             //每一个项中的内容
             .x-item-content {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
                 flex: 1;
                 text-align: center;
             }
         }
     }
 
+}
+
+//月份选择器
+.x-month-picker-wrapper {
+    z-index: 99999;
+    background-color: #fff;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 3.22rem;
+    height: 2.48rem;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 20%);
+    user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+
+    .x-month-picker-header {
+        display: flex;
+        justify-content: space-between;
+        margin: 0.12rem 0.12rem 0 0.12rem;
+        padding-bottom: 0.12rem;
+        text-align: center;
+        border-bottom: 1px solid #ebeef5;
+        color: #606226;
+
+        .x-month-year-wrap{
+            flex: 1;
+            padding: 0.06rem 0;
+        }
+
+        .x-month-prev-year {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .x-month-next-year {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .common-toggle-date-btn {
+            padding: 0 0.1rem;
+            width: 0.3rem;
+            height: 100%;
+            cursor: pointer;
+            & > svg {
+                width: 0.1rem;
+                height: 0.1rem;
+                fill: #606266;
+                transition: all 0.3s ease;
+                &:hover {
+                    fill: #409eff;
+                }
+            }
+        }
+    }
+
+    .x-month-picker-body {
+        padding: 0.12rem;
+        flex: 1;
+        display: flex;
+        flex-wrap: wrap;
+
+        .x-month-picker-item {
+            display:flex;
+            flex: 0 0 25%;
+            padding: 8px 0;
+            span{
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                flex: 1;
+                margin: 0 0.07rem;
+                cursor: pointer;&:hover{
+                color: #409eff;
+                transition: all 0.2s ease;
+            }
+            }
+        }
+    }
 }

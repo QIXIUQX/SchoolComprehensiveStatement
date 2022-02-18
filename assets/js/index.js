@@ -1,7 +1,8 @@
+/******* 图表 start *******/
 /**
  * 生均阅读量走势图
  */
-function readingsPerStudentCharts() {
+function readingsPerStudentCharts(categoryList, data) {
 	Highcharts.chart('readings-per-student-charts', {
 		chart: {
 			type: 'line',
@@ -19,7 +20,8 @@ function readingsPerStudentCharts() {
 			text: ""
 		},
 		xAxis: {
-			categories: ['11.2', '12.31', '7.9', '8.5']  // x 轴分类
+			// categories: ['11.2', '12.31', '7.9', '8.5']  // x 轴分类
+			categories: categoryList  // x 轴分类
 		},
 		yAxis: {
 			title: {
@@ -46,9 +48,8 @@ function readingsPerStudentCharts() {
 		},
 		series: [{                              // 数据列
 			name: '生均阅读量',                        // 数据列名
-			// data: [0, 0, 0, 0, 0, 0]                     // 数据
-			// data: [0, 99, 75, 1]    ,                 // 数据
-			data: [0, 0, 0,0]                     // 数据
+			// data: [0, 0, 0, 0]                     // 数据
+			data: data
 		}],
 		responsive: {},
 		credits: {
@@ -72,7 +73,7 @@ function readingsPerStudentCharts() {
 /**
  * 考级次数走势图
  */
-function examTimesCharts() {
+function examTimesCharts(categoryList, data) {
 	Highcharts.chart('exam-times-charts', {
 		chart: {
 			type: 'line',
@@ -90,7 +91,7 @@ function examTimesCharts() {
 			text: ""
 		},
 		xAxis: {
-			categories: ['2022年2月17日', '2022年2月18日', '2022年2月19日', '2022年2月20日', '2022年2月21日', '2022年2月22日']  // x 轴分类
+			categories: categoryList  // x 轴分类
 		},
 		yAxis: {
 			title: {
@@ -119,7 +120,7 @@ function examTimesCharts() {
 			name: '考级次数',                        // 数据列名
 			// data: [0, 0, 0, 0, 0, 0]                     // 数据
 			// data: [0, 99, 75, 1]    ,                 // 数据
-			data: [0, 0,0,0]                     // 数据
+			data: data                     // 数据
 		}],
 		responsive: {},
 		credits: {
@@ -191,11 +192,11 @@ function readingActivityCharts() {
 				name: '阅读本书',                        // 数据列名
 				// data: [0, 0, 0, 0, 0, 0]                     // 数据
 				// data: [0, 99, 75, 1]    ,                 // 数据
-				data: [0,0,0,0]                     // 数据
+				data: [0, 0, 0, 0]                     // 数据
 			},
 			{                              // 数据列
 				name: '阅读活动',                        // 数据列名
-				data: [0,0,0,0]                     // 数据
+				data: [0, 0, 0, 0]                     // 数据
 			}
 		],
 		responsive: {},
@@ -266,11 +267,11 @@ function last120DayCharts() {
 		series: [
 			{                              // 数据列
 				name: '阅读任务',                        // 数据列名
-				data: [0,0,0,0]                     // 数据
+				data: [0, 0, 0, 0]                     // 数据
 			},
 			{                              // 数据列
 				name: '阅读活动',                        // 数据列名
-				data: [0,0,0,0]                     // 数据
+				data: [0, 0, 0, 0]                     // 数据
 			}
 		],
 		responsive: {},
@@ -347,6 +348,53 @@ function monthlyTestCharts() {
 	});
 }
 
+/******* 图表 end *******/
+
+
+/**
+ *  生均阅读量走势图网络请求
+ * @param typeCode 0 表示30天 1表示四个月
+ */
+function getReadingsPerStudentChartsData(typeCode) {
+	$.ajax({
+		url: "http://localhost:3000/getReadingsPerStudentChartsData",
+		data: {
+			type: typeCode
+		},
+		type: "POST",
+		async: true,
+		dataType: "json",
+		success: function (data) {
+			readingsPerStudentCharts(data.category, data.data)
+		},
+		error: function (jqXHR, textStatus, errorThrown) {
+			console.error("请求异常:", errorThrown, "在：", jqXHR)
+		}
+	});
+}
+
+/**
+ * 考级次数走势图网络请求
+ * @param typeCode 请求类型 0 表示30天 1表示四个月
+ */
+function getExamTimesChartsData(typeCode) {
+	$.ajax({
+		url: "http://localhost:3000/getExamTimesChartsData",
+		data: {
+			type: typeCode
+		},
+		type: "POST",
+		async: true,
+		dataType: "json",
+		success: function (data) {
+			examTimesCharts(data.category, data.data)
+		},
+		error: function (jqXHR, textStatus, errorThrown) {
+			console.error("请求异常:", errorThrown, "在：", jqXHR)
+		}
+	});
+}
+
 
 /**
  * 获取班级信息并渲染到页面中
@@ -358,7 +406,7 @@ function getGradeList() {
 		url: "http://localhost:3000/getGradeList",
 		data: {},
 		type: "POST",
-		async: false,
+		async: true,
 		dataType: "json",
 		success: function (gradeList) {
 			$.each(gradeList, function (i, item) {
@@ -401,12 +449,11 @@ function getInfoCategory() {
 		}
 	]
 
-
 	$.ajax({
 		url: "http://localhost:3000/getInfoCategory",
 		data: {},
 		type: "POST",
-		async: false,
+		async: true,
 		dataType: "json",
 		success: function (categoryList) {
 			console.log(categoryList);
@@ -418,7 +465,7 @@ function getInfoCategory() {
 					'		<div class="item-body">' +
 					'			<!--具体数值-->' +
 					'			<div class="body-num">' + item.count + '</div>' +
-					'			<!--百分比和图表-->' +
+					'			<!--百分比和图标-->' +
 					'			<div class="proportion-wrap">' +
 					'				<div class="proportion-img">' +
 					'					<img src="./assets/images/img_' + categoryInfoMap[item.ratioType].imgSrcName + '.png" alt="">' +
@@ -440,28 +487,29 @@ function getInfoCategory() {
 /**
  * 获取生均阅读数据表
  */
-function getReadingsPerStudentTab() {
+function getReadingsPerStudentTab(typeCode) {
 	var readingStudentListEl = $(".reading-student-list")
 	var readingStudentListItemStr = ""
 
 	$.ajax({
 		url: "http://localhost:3000/getReadingsPerStudentTabData",
-		data: {},
+		data: {type: typeCode},
 		type: "POST",
-		async: false,
+		async: true,
 		dataType: "json",
 		success: function (data) {
-			console.log(data);
+			if (data.length === 0) {
+				domUtils.noDateEl(readingStudentListEl)
+				return
+			}
 			$.each(data, function (i, item) {
 				readingStudentListItemStr +=
 					'	<div class="x-item">' +
 					'		<div class="x-item-content">' + dateUtils.dateFormat(item.time, "yyyy.MM.dd") + '-' + dateUtils.dateFormat(item.endTime, "yyyy.MM.dd") + '</div>' +
-					'		<div class="x-item-content">' + item.grade + '</div>' +
-					'		<div class="x-item-content">' + item.readingNum + '</div>' +
-					'		<div class="x-item-content">' + item.examNum + '</div>' +
+					'		<div class="x-item-content" title="' + item.grade + '">' + item.grade + '</div>' +
+					'		<div class="x-item-content" title="' + item.readingNum + '">' + item.readingNum + '</div>' +
+					'		<div class="x-item-content" title="' + item.examNum + '">' + item.examNum + '</div>' +
 					'	</div>'
-
-
 			})
 			readingStudentListEl.html(readingStudentListItemStr)
 		},
@@ -471,14 +519,6 @@ function getReadingsPerStudentTab() {
 	});
 }
 
-/**
- * 点击切换三个月和四个月数据
- */
-function handleToggleMonthBtnClick() {
-	$(".toggle-item").on("click", function () {
-		$(this).addClass("active-toggle-item").siblings().removeClass("active-toggle-item")
-	})
-}
 
 /**
  * 获取任务数
@@ -492,16 +532,15 @@ function getTaskData() {
 		url: "http://localhost:3000/readingTask",
 		data: {},
 		type: "POST",
-		async: false,
+		async: true,
 		dataType: "json",
 		success: function (data) {
-
 			$.each(data, function (i, item) {
 				readingTaskListItemStr +=
 					'	<div class="x-item">' +
 					'		<div class="x-item-content">' + monthMap[parseInt(dateUtils.dateFormat(item.time, "MM月")) - 1] + '</div>' +
-					'		<div class="x-item-content">' + item.grade + '</div>' +
-					'		<div class="x-item-content">' + item.taskNum + '</div>' +
+					'		<div class="x-item-content" title="' + item.grade + '">' + item.grade + '</div>' +
+					'		<div class="x-item-content" title="' + item.taskNum + '">' + item.taskNum + '</div>' +
 					'		<div class="x-item-content">' + (item.participationRate * 100).toFixed(2) + '%</div>' +
 					'		<div class="x-item-content">' + (item.passingRate * 100).toFixed(2) + '%</div>' +
 					'	</div>'
@@ -527,17 +566,21 @@ function getActivityHotRank() {
 		url: "http://localhost:3000/activityHotRank",
 		data: {},
 		type: "POST",
-		async: false,
+		async: true,
 		dataType: "json",
 		success: function (data) {
+			if (data.length === 0) {
+				domUtils.noDateEl(activityHotListEl)
+				return
+			}
 			$.each(data, function (i, item) {
 				activityHotListItemStr +=
 					'	<div class="x-item">' +
 					'		<div class="x-item-content">' + item.rank + '</div>' +
-					'		<div class="x-item-content">' + item.activityName + '</div>' +
-					'		<div class="x-item-content">' + item.grade + '</div>' +
+					'		<div class="x-item-content" title="' + item.activityName + '">' + item.activityName + '</div>' +
+					'		<div class="x-item-content" title="' + item.grade + '">' + item.grade + '</div>' +
 					'		<div class="x-item-content">' + (item.passingRate * 100).toFixed(2) + '%</div>' +
-					'		<div class="x-item-content">' + item.works + '</div>' +
+					'		<div class="x-item-content" title="' + item.works + '">' + item.works + '</div>' +
 					'	</div>'
 			})
 			activityHotListEl.html(activityHotListItemStr)
@@ -554,21 +597,25 @@ function getActivityHotRank() {
  */
 function getSchoolRank() {
 	var schoolRankingListEl = $(".school-ranking-list")
-	var schoolRankingListItemStr="";
+	var schoolRankingListItemStr = "";
 
 	$.ajax({
 		url: "http://localhost:3000/schoolRank",
 		data: {},
 		type: "POST",
-		async: false,
+		async: true,
 		dataType: "json",
 		success: function (data) {
+			if (data.length === 0) {
+				domUtils.noDateEl(schoolRankingListEl)
+				return
+			}
 			$.each(data, function (i, item) {
 				schoolRankingListItemStr +=
 					'	<div class="x-item">' +
 					'		<div class="x-item-content">' + item.rank + '</div>' +
-					'		<div class="x-item-content">' + item.schoolName + '</div>' +
-					'		<div class="x-item-content">' + item.aveReadingBookCount + '</div>' +
+					'		<div class="x-item-content" title="' + item.schoolName + '">' + item.schoolName + '</div>' +
+					'		<div class="x-item-content" title="' + item.aveReadingBookCount + '">' + item.aveReadingBookCount + '</div>' +
 					'	</div>'
 			})
 			schoolRankingListEl.html(schoolRankingListItemStr)
@@ -581,6 +628,39 @@ function getSchoolRank() {
 }
 
 
+/**
+ * 点击切换三个月和四个月数据
+ */
+function handleToggleMonthBtnClick() {
+
+	$(".toggle-item").on("click", function () {
+		$(this).addClass("active-toggle-item").siblings().removeClass("active-toggle-item")
+		var toggleTypeStr = $(this).attr("data-toggle-type")
+		toggleTypeMethods[toggleTypeStr]() //点击时候切换对应的数据
+	})
+}
+
+var toggleTypeMethods = {
+	last30Days: function () {
+		console.log("last30Days 被点击")
+		getReadingsPerStudentChartsData(0)
+		getExamTimesChartsData(0)
+		getReadingsPerStudentTab(0)
+	},
+	lastFourMonth: function () {
+		console.log("lastFourMonth 被点击")
+		getReadingsPerStudentChartsData(1)
+		getExamTimesChartsData(1)
+		getReadingsPerStudentTab(1)
+	},
+	readingTask: function () {
+		console.log("readingTask 被点击")
+	},
+	readingActivity: function () {
+		console.log("readingActivity 被点击")
+	},
+}
+
 window.onload = function () {
 	init()
 
@@ -590,9 +670,11 @@ window.onload = function () {
 	function init() {
 		getGradeList()
 		getInfoCategory()
-		readingsPerStudentCharts()
-		examTimesCharts()
-		getReadingsPerStudentTab()
+		// readingsPerStudentCharts()
+		getReadingsPerStudentChartsData(0)
+		// examTimesCharts()
+		getExamTimesChartsData(0)
+		getReadingsPerStudentTab(0)
 		handleToggleMonthBtnClick()
 		readingActivityCharts()
 		last120DayCharts()
@@ -600,5 +682,13 @@ window.onload = function () {
 		getActivityHotRank()
 		monthlyTestCharts()
 		getSchoolRank()
+		initProperties()
+	}
+
+	/**
+	 * 初始化需要赋值的属性
+	 */
+	function initProperties() {
+		$(".month-selected").val(dateUtils.dateFormat(dateUtils.getTimeStamp(), "yyyy-MM"))
 	}
 }

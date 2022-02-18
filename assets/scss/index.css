@@ -5,6 +5,7 @@
 
 body {
   font-size: 0.16rem;
+  font-family: "Microsoft Yahei", "PingFang SC", "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
   color: #333; }
 
 #app {
@@ -66,13 +67,18 @@ body {
       margin-top: 0.2rem;
       display: flex;
       width: 100%;
-      height: max-content; }
+      height: max-content;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
       #app .container .info-category-list .info-cate-item {
         flex: 1;
         display: flex;
         flex-direction: column;
         background-color: #fff;
-        border: 0.01rem solid #eee; }
+        border-top: 0.01rem solid #eee;
+        border-left: 0.01rem solid #eee;
+        border-bottom: 0.01rem solid #eee; }
+        #app .container .info-category-list .info-cate-item:nth-last-child(1) {
+          border-right: 0.01rem solid #eee; }
         #app .container .info-category-list .info-cate-item .item-title {
           padding: 0.05rem 0;
           font-size: 0.25rem;
@@ -113,23 +119,20 @@ body {
         height: max-content; }
         #app .container .general-info .common-info-column.info-column-three {
           width: 4rem; }
-      #app .container .general-info .average-student-info {
-        display: flex;
-        flex-direction: column; }
-        #app .container .general-info .average-student-info .common-student-info {
+        #app .container .general-info .common-info-column .common-info-wrap {
           flex: 1;
           height: 4rem;
           display: flex;
           flex-direction: column;
-          margin: 0.05rem 0;
-          background-color: #fff; }
-          #app .container .general-info .average-student-info .common-student-info .common-student-info-header {
+          background-color: #fff;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+          #app .container .general-info .common-info-column .common-info-wrap .common-info-wrap-header {
             position: relative; }
-            #app .container .general-info .average-student-info .common-student-info .common-student-info-header .common-info-title {
+            #app .container .general-info .common-info-column .common-info-wrap .common-info-wrap-header .common-info-title {
               padding: 5px 0;
               font-size: 0.28rem;
               text-align: center; }
-            #app .container .general-info .average-student-info .common-student-info .common-student-info-header .toggle-time {
+            #app .container .general-info .common-info-column .common-info-wrap .common-info-wrap-header .toggle-time {
               display: flex;
               user-select: none;
               -webkit-user-select: none;
@@ -145,47 +148,38 @@ body {
               line-height: 0.26rem;
               cursor: pointer;
               text-align: center; }
-              #app .container .general-info .average-student-info .common-student-info .common-student-info-header .toggle-time .toggle-item {
+              #app .container .general-info .common-info-column .common-info-wrap .common-info-wrap-header .toggle-time .toggle-item {
                 padding: 0 0.05rem;
                 width: 0.8rem;
                 height: 100%;
                 font-size: 0.13rem; }
-              #app .container .general-info .average-student-info .common-student-info .common-student-info-header .toggle-time .active-toggle-item {
+              #app .container .general-info .common-info-column .common-info-wrap .common-info-wrap-header .toggle-time .active-toggle-item {
                 background-color: #7cb5ec;
                 color: #fff; }
+      #app .container .general-info .average-student-info {
+        display: flex;
+        flex-direction: column; }
         #app .container .general-info .average-student-info .readings-per-student {
           width: 100%; }
-          #app .container .general-info .average-student-info .readings-per-student .readings-per-student-charts1 {
-            flex: 1;
-            width: 7rem;
-            min-height: 2rem; }
         #app .container .general-info .average-student-info .exam-times {
           margin-top: 0.2rem;
-          width: 100%;
-          height: 4rem; }
-          #app .container .general-info .average-student-info .exam-times .exam-times-charts {
-            flex: 1;
-            width: 100%;
-            height: 100%; }
+          width: 100%; }
         #app .container .general-info .average-student-info .readings-per-student-tab {
           margin-top: 0.2rem; }
-          #app .container .general-info .average-student-info .readings-per-student-tab .x-table-list {
-            padding: 0.1rem; }
-            #app .container .general-info .average-student-info .readings-per-student-tab .x-table-list .x-header-wrap {
-              padding: 0.1rem 0;
-              display: flex; }
-              #app .container .general-info .average-student-info .readings-per-student-tab .x-table-list .x-header-wrap .x-item-header {
-                flex: 1;
-                text-align: center;
-                font-size: 0.18rem;
-                font-weight: 500; }
-            #app .container .general-info .average-student-info .readings-per-student-tab .x-table-list .x-list {
-              font-size: 0.14rem; }
-              #app .container .general-info .average-student-info .readings-per-student-tab .x-table-list .x-list .x-item {
-                padding: 0.08rem 0;
-                display: flex; }
-                #app .container .general-info .average-student-info .readings-per-student-tab .x-table-list .x-list .x-item:nth-child(odd) {
-                  background-color: #FAFAFA; }
-                #app .container .general-info .average-student-info .readings-per-student-tab .x-table-list .x-list .x-item .x-item-content {
-                  flex: 1;
-                  text-align: center; }
+      #app .container .general-info .reading-activity {
+        display: flex;
+        flex-direction: column; }
+        #app .container .general-info .reading-activity .reading-activity-last-120-days {
+          margin-top: 0.2rem; }
+        #app .container .general-info .reading-activity .reading-activity-tab, #app .container .general-info .reading-activity .reading-task-tab {
+          margin-top: 0.2rem; }
+      #app .container .general-info .common-activity-list .common-activity-item {
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        #app .container .general-info .common-activity-list .common-activity-item .activity-hot-list-title {
+          padding: 0.05rem 0;
+          font-size: 0.28rem;
+          text-align: center;
+          border-bottom: 1px solid #e0dddd; }
+      #app .container .general-info .common-activity-list .monthly-test-wrap, #app .container .general-info .common-activity-list .school-ranking-wrap {
+        margin-top: 0.2rem; }

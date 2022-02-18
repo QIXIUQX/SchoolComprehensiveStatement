@@ -179,3 +179,44 @@
 //        }
 //    }
 //}
+
+
+//表格头部
+.x-table-list {
+    padding: 0.1rem;
+
+    .x-header-wrap {
+        padding: 0.1rem 0;
+        display: flex;
+
+        //表格头部
+        .x-item-header {
+            flex: 1;
+            text-align: center;
+            font-size: 0.18rem;
+            font-weight: 500;
+        }
+    }
+
+    //表格内容
+    .x-list {
+        font-size: 0.14rem;
+        //每一个项
+        .x-item {
+            padding: 0.08rem 0;
+            display: flex;
+
+            //单数设置背景颜色
+            &:nth-child(odd) {
+                background-color: #FAFAFA;
+            }
+
+            //每一个项中的内容
+            .x-item-content {
+                flex: 1;
+                text-align: center;
+            }
+        }
+    }
+
+}

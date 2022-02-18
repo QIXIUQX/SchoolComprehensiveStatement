@@ -20,7 +20,7 @@
 	
 	
 	<script src="./assets/js/Highcharts-9.3.2/highcharts.js"></script>
-	<script src="./assets/js/Highcharts-9.3.2/modules/exporting.js"></script>
+	<script src="./assets/js/Highcharts-9.3.2/highcharts-more.js"></script>
 	<script src="./assets/js/Highcharts-9.3.2/modules/oldie.js"></script>
 	
 	<title>学校综合报表</title>
@@ -158,8 +158,8 @@
 			<!--生均信息-->
 			<div class="common-info-column average-student-info">
 				<!--生均阅读量走势图-->
-				<div class="common-student-info readings-per-student">
-					<div class="common-student-info-header">
+				<div class="common-info-wrap readings-per-student">
+					<div class="common-info-wrap-header">
 						<div class="common-info-title">生均阅读量走势图</div>
 						<!--<label onclick="switchClick(this)" class="x-switch toggle-time" data-value="true"></label>-->
 						<div class="toggle-time">
@@ -167,18 +167,19 @@
 							<div class="toggle-item item-four">最近四个月</div>
 						</div>
 					</div>
-					<div id="readings-per-student-charts" style="min-height:3rem;height:4rem"></div>
+					<div id="readings-per-student-charts"
+					     style="width:100%;min-height:300px;height:4rem"></div>
 				</div>
-				
 				<!--考级次数走势图-->
-				<div class="common-student-info exam-times">
-					<div class="common-student-info-header">
+				<div class="common-info-wrap exam-times">
+					<div class="common-info-wrap-header">
 						<div class="common-info-title">考级次数走势图</div>
 					</div>
-					<div id="exam-times-charts"></div>
+					<div id="exam-times-charts" style="width:100%;min-height:300px;height:4rem">
+					</div>
 				</div>
 				<!--生均阅读数据表-->
-				<div class="common-student-info readings-per-student-tab">
+				<div class="common-info-wrap readings-per-student-tab">
 					<div class="x-table-list">
 						<!--表格头部-->
 						<div class="x-header-wrap">
@@ -189,41 +190,92 @@
 						</div>
 						<!--表格列表-->
 						<div class="x-list reading-student-list">
-							<div class="x-item">
-								<div class="x-item-content">1231</div>
-								<div class="x-item-content">1231</div>
-								<div class="x-item-content">1231</div>
-								<div class="x-item-content">1231</div>
-							</div>
-							<div class="x-item">
-								<div class="x-item-content">1231</div>
-								<div class="x-item-content">1231</div>
-								<div class="x-item-content">1231</div>
-								<div class="x-item-content">1231</div>
-							</div>
-							<div class="x-item">
-								<div class="x-item-content">1231</div>
-								<div class="x-item-content">1231</div>
-								<div class="x-item-content">1231</div>
-								<div class="x-item-content">1231</div>
-							</div>
-							<div class="x-item">
-								<div class="x-item-content">1231</div>
-								<div class="x-item-content">1231</div>
-								<div class="x-item-content">1231</div>
-								<div class="x-item-content">1231</div>
-							</div>
 						</div>
 					</div>
 				</div>
-			
 			</div>
 			<!--阅读信息-->
 			<div class="common-info-column reading-activity">
-			
+				<!--阅读任务综合表-->
+				<div class="common-info-wrap reading-activity">
+					<div class="common-info-wrap-header">
+						<div class="common-info-title">阅读任务综合报表</div>
+						<div class="toggle-time">
+							<div class="toggle-item item-three active-toggle-item">阅读任务</div>
+							<div class="toggle-item item-four">阅读活动</div>
+						</div>
+					</div>
+					<div id="reading-activity-charts"
+					     style="width:100%;min-height:300px;height:4rem"></div>
+				</div>
+				<!--一百二十天-->
+				<div class="common-info-wrap reading-activity-last-120-days">
+					<div class="common-info-wrap-header">
+						<div class="common-info-title">最近120天</div>
+					</div>
+					<!--最近120天数据-->
+					<div id="last-120-day-charts"
+					     style="width:100%;min-height:300px;height:4rem;margin: 0 auto;"></div>
+				</div>
+				<!--阅读活动表-->
+				<div class="common-info-wrap reading-task-tab">
+					<div class="x-table-list">
+						<!--表格头部-->
+						<div class="x-header-wrap">
+							<div class="x-item-header">时间</div>
+							<div class="x-item-header">年段</div>
+							<div class="x-item-header">任务次数</div>
+							<div class="x-item-header">参与率</div>
+							<div class="x-item-header">通过率</div>
+						</div>
+						<!--表格列表-->
+						<div class="x-list reading-task-list">
+						
+						</div>
+					</div>
+				</div>
 			</div>
 			<!--热力信息-->
-			<div class="common-info-column info-column-three"></div>
+			<div class="common-info-column info-column-three common-activity-list">
+				<!--活动热力榜-->
+				<div class="common-activity-item">
+					<div class="activity-hot-list-title">活动热力榜</div>
+					<div class="x-table-list">
+						<!--表格头部-->
+						<div class="x-header-wrap">
+							<div class="x-item-header">名次</div>
+							<div class="x-item-header">活动名称</div>
+							<div class="x-item-header">年段</div>
+							<div class="x-item-header">通过率</div>
+							<div class="x-item-header">作品</div>
+						</div>
+						<!--表格列表-->
+						<div class="x-list activity-hot-list">
+						</div>
+					</div>
+				</div>
+				<!--每月一册-->
+				<div class="common-activity-item monthly-test-wrap">
+					<div class="activity-hot-list-title">每月一测</div>
+					<div id="monthly-test-charts"
+					     style="width:100%;min-height: 200px;height: 3rem;margin: 0 auto;"></div>
+				</div>
+				<!--学校排名-->
+				<div class="common-activity-item school-ranking-wrap">
+					<div class="activity-hot-list-title">学校排名</div>
+					<div class="x-table-list">
+						<!--表格头部-->
+						<div class="x-header-wrap">
+							<div class="x-item-header">名次</div>
+							<div class="x-item-header">学校名称</div>
+							<div class="x-item-header">生均阅读本数</div>
+						</div>
+						<!--表格列表-->
+						<div class="x-list school-ranking-list">
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

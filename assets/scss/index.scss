@@ -6,6 +6,7 @@
 
 body {
     font-size: 0.16rem;
+    font-family: "Microsoft Yahei", "PingFang SC", "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
     color: #333;
 }
 
@@ -112,6 +113,7 @@ body {
 
     }
 
+    //主要内容部分
     .container {
         padding: 0 0.15rem;
         //    分类统计信息
@@ -120,6 +122,8 @@ body {
             display: flex;
             width: 100%;
             height: max-content;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
 
             //每一个项目
             .info-cate-item {
@@ -127,7 +131,14 @@ body {
                 display: flex;
                 flex-direction: column;
                 background-color: #fff;
-                border: 0.01rem solid #eee;
+                border-top: 0.01rem solid #eee;
+                border-left: 0.01rem solid #eee;
+                border-bottom: 0.01rem solid #eee;
+
+                &:nth-last-child(1) {
+                    border-right: 0.01rem solid #eee;
+                }
+
                 //标题
                 .item-title {
                     padding: 0.05rem 0;
@@ -199,23 +210,18 @@ body {
                 &.info-column-three {
                     width: 4rem;
                 }
-            }
-
-            //生均信息
-            .average-student-info {
-                display: flex;
-                flex-direction: column;
 
                 //公共  生均信息
-                .common-student-info {
+                .common-info-wrap {
                     flex: 1;
                     height: 4rem;
                     display: flex;
                     flex-direction: column;
-                    margin: 0.05rem 0;
+                    //margin: 0.05rem 0;
                     background-color: #fff;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
                     //头部标签
-                    .common-student-info-header {
+                    .common-info-wrap-header {
                         position: relative;
                         //标题
                         .common-info-title {
@@ -258,76 +264,79 @@ body {
                     }
 
                 }
+            }
 
-                //考级次数走势图
+            //生均信息
+            .average-student-info {
+                display: flex;
+                flex-direction: column;
+
+                //生均阅读量走势图
                 .readings-per-student {
                     width: 100%;
 
-                    .readings-per-student-charts1 {
-                        flex: 1;
-                        width: 7rem;
-                        min-height: 2rem;
-                    }
+                    //.readings-per-student-charts1 {
+                    //    flex: 1;
+                    //}
                 }
 
                 //考级次数走势图
                 .exam-times {
                     margin-top: 0.2rem;
                     width: 100%;
-                    height: 4rem;
-
-                    .exam-times-charts {
-                        flex: 1;
-                        width: 100%;
-                        height: 100%;
-                    }
+                    //.exam-times-charts {
+                    //    flex: 1;
+                    //}
                 }
 
                 //生均阅读数据表
                 .readings-per-student-tab {
                     margin-top: 0.2rem;
-                    //表格头部
-                    .x-table-list {
-                        padding: 0.1rem;
+                }
+            }
 
-                        .x-header-wrap {
-                            padding: 0.1rem 0;
-                            display: flex;
+            // 阅读信息
+            .reading-activity {
+                display: flex;
+                flex-direction: column;
 
-                            .x-item-header {
-                                flex: 1;
-                                text-align: center;
-                                font-size: 0.18rem;
-                                font-weight: 500;
-                            }
-                        }
-
-                        //    表格内容
-                        .x-list {
-                            font-size: 0.14rem;
-                            //每一个项
-                            .x-item {
-                                padding: 0.08rem 0;
-                                display: flex;
-
-                                //单数设置背景颜色
-                                &:nth-child(odd) {
-                                    background-color: #FAFAFA;
-                                }
-
-                                //每一个项中的内容
-                                .x-item-content {
-                                    flex: 1;
-                                    text-align: center;
-                                }
-                            }
-                        }
-                    }
+                //一百二十天数据
+                .reading-activity-last-120-days {
+                    margin-top: 0.2rem;
 
 
                 }
+
+                //阅读活动
+                .reading-activity-tab, .reading-task-tab {
+                    margin-top: 0.2rem;
+                }
+            }
+
+            //热力信息
+            .common-activity-list {
+
+                //每一个活动
+                .common-activity-item {
+                    background-color: #fff;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                    //活动标题
+                    .activity-hot-list-title {
+                        padding: 0.05rem 0;
+                        font-size: 0.28rem;
+                        text-align: center;
+                        border-bottom: 1px solid #e0dddd;
+                    }
+                }
+
+                .monthly-test-wrap, .school-ranking-wrap {
+                    margin-top: 0.2rem;
+                }
+
             }
         }
     }
-
 }
+
+
+

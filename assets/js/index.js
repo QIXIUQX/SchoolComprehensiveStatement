@@ -748,9 +748,9 @@ function getSchoolRank() {
 }
 
 /**
- * 点击切换三个月和四个月数据
+ * 点击切换生均和阅读任务与阅读活动
  */
-function handleToggleMonthBtnClick() {
+function handleToggleTimeAndTaskTypeBtnClick() {
 
 	//生均信息切换
 	$(".average-student-type").on("click", ".toggle-item", function () {
@@ -773,28 +773,32 @@ function handleToggleMonthBtnClick() {
  */
 var toggleTypeMethods = {
 	last30Days: function () {
-		console.log("last30Days 被点击")
+		console.info("开始获取最近三十天的数据")
 		getReadingsPerStudentChartsData()
 		getExamTimesChartsData()
 		getReadingsPerStudentTab()
+		console.info("数据已更新")
 	},
 	lastFourMonth: function () {
-		console.log("lastFourMonth 被点击")
+		console.info("开始获取最近四个月的数据")
 		getReadingsPerStudentChartsData(1)
 		getExamTimesChartsData(1)
 		getReadingsPerStudentTab(1)
+		console.info("数据已更新")
 	},
 	readingTask: function () {
-		console.log("readingTask 被点击")
-		getReadingActivityChartsData(0)
-		getLast120DayChartsData(0)
-		getTaskData(0)
+		console.info("开始获取阅读任务的数据")
+		getReadingActivityChartsData()
+		getLast120DayChartsData()
+		getTaskData()
+		console.info("数据已更新")
 	},
 	readingActivity: function () {
-		console.log("readingActivity 被点击")
-		getReadingActivityChartsData(1)
-		getLast120DayChartsData(1)
-		getTaskData(1)
+		console.info("开始获取阅读活动的数据")
+		getReadingActivityChartsData()
+		getLast120DayChartsData()
+		getTaskData()
+		console.info("数据已更新")
 	}
 }
 
@@ -807,6 +811,7 @@ window.onload = function () {
 	function initOnce() {
 		getGradeList()
 		initProperties()
+		handleToggleTimeAndTaskTypeBtnClick()// 生均图和阅读图的切换功能
 		handleDialogBtnClick()
 		handleShowDialogBtnClick()
 		handleExportFileBtnClick()
@@ -820,8 +825,6 @@ window.onload = function () {
  * 进入页面初始化内容
  */
 function init() {
-	// 生均图和阅读图的切换功能
-	handleToggleMonthBtnClick()
 
 	//分类信息获取
 	getInfoCategory()

@@ -9,7 +9,6 @@ function monthPicker(param) {
 	var offsetPositionArr = $(monthPicker__this).offset();
 	var offsetHeight = $(monthPicker__this).outerHeight();
 	generateMonthPicker();
-	console.log(offsetPositionArr, offsetHeight);
 	monthPickerWrapEl = $(".x-month-picker-wrapper");
 	__year = parseInt(monthPickerWrapEl.find(".x-month-year-txt").text());
 	//设置生生成的月份组件的位置
@@ -20,7 +19,6 @@ function monthPicker(param) {
 	//将日历显示出来
 	monthPickerWrapEl.show();
 	handleClickCheck();
-
 	prevYearEvent();
 	nextYearEvent();
 	handleDayClick();

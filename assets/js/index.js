@@ -144,7 +144,7 @@ function examTimesCharts(categoryList, data) {
 /**
  * 阅读任务综合报表
  */
-function readingActivityCharts() {
+function readingActivityCharts(categoryList, readingBookList, readingActivityList) {
 	Highcharts.chart('reading-activity-charts', {
 		chart: {
 			type: 'line',
@@ -162,7 +162,8 @@ function readingActivityCharts() {
 			text: ""
 		},
 		xAxis: {
-			categories: ['2022年2月17日', '2022年2月18日', '2022年2月19日', '2022年2月20日', '2022年2月21日', '2022年2月22日']  // x 轴分类
+			// categories: ['2022年2月17日', '2022年2月18日', '2022年2月19日', '2022年2月20日', '2022年2月21日', '2022年2月22日']  // x 轴分类
+			categories: categoryList  // x 轴分类
 		},
 		yAxis: {
 			title: {
@@ -192,11 +193,13 @@ function readingActivityCharts() {
 				name: '阅读本书',                        // 数据列名
 				// data: [0, 0, 0, 0, 0, 0]                     // 数据
 				// data: [0, 99, 75, 1]    ,                 // 数据
-				data: [0, 0, 0, 0]                     // 数据
+				// data: [5, 6, 7, 8]                     // 数据
+				data: readingBookList                   // 数据
 			},
 			{                              // 数据列
 				name: '阅读活动',                        // 数据列名
-				data: [0, 0, 0, 0]                     // 数据
+				// data: [20, 30, 40, 50]                     // 数据
+				data: readingActivityList                    // 数据
 			}
 		],
 		responsive: {},
@@ -350,6 +353,7 @@ function monthlyTestCharts() {
 
 /******* 图表 end *******/
 
+/******* 图表网络请求 start *******/
 
 /**
  *  生均阅读量走势图网络请求
@@ -395,9 +399,32 @@ function getExamTimesChartsData(typeCode) {
 	});
 }
 
+/**
+ *阅读任务综合报表网络请求
+ * @param typeCode 类型阅读任务和阅读活动
+ */
+function getReadingActivityChartsData(typeCode) {
+	$.ajax({
+		url: "http://localhost:3000/getReadingActivityChartsData",
+		data: {type: typeCode},
+		type: "POST",
+		async: true,
+		dataType: "json",
+		success: function (data) {
+			readingActivityCharts(data.categories, data.readingBookList, data.readingActivityList)
+		},
+		error: function (jqXHR, textStatus, errorThrown) {
+			console.error("请求异常:", errorThrown, "在：", jqXHR)
+		}
+	});
+
+}
+
+/******* 图表网络请求 end *******/
+
 
 /**
- * 获取班级信息并渲染到页面中
+ * 班级信息获取
  */
 function getGradeList() {
 	var gradeListEl = $(".grade-select") // 选择器元素
@@ -422,7 +449,7 @@ function getGradeList() {
 }
 
 /**
- * 考级等信息分类数据获取
+ * 顶部考级等信息分类数据获取
  */
 function getInfoCategory() {
 	var infoCategoryListEl = $(".info-category-list")
@@ -485,12 +512,11 @@ function getInfoCategory() {
 }
 
 /**
- * 获取生均阅读数据表
+ * 生均阅读量 表格的数据获取
  */
 function getReadingsPerStudentTab(typeCode) {
 	var readingStudentListEl = $(".reading-student-list")
 	var readingStudentListItemStr = ""
-
 	$.ajax({
 		url: "http://localhost:3000/getReadingsPerStudentTabData",
 		data: {type: typeCode},
@@ -521,7 +547,7 @@ function getReadingsPerStudentTab(typeCode) {
 
 
 /**
- * 获取任务数
+ * 阅读任务综合报表 表格的数据获取
  */
 function getTaskData() {
 	var readingTaskList = $(".reading-task-list")
@@ -556,7 +582,7 @@ function getTaskData() {
 
 
 /**
- * 活动热力图
+ * 活动热力榜数据获取
  */
 function getActivityHotRank() {
 	var activityHotListEl = $(".activity-hot-list")
@@ -593,7 +619,7 @@ function getActivityHotRank() {
 }
 
 /**
- * 活动热力图
+ * 学校排名数据获取
  */
 function getSchoolRank() {
 	var schoolRankingListEl = $(".school-ranking-list")
@@ -627,7 +653,6 @@ function getSchoolRank() {
 
 }
 
-
 /**
  * 点击切换三个月和四个月数据
  */
@@ -655,9 +680,11 @@ var toggleTypeMethods = {
 	},
 	readingTask: function () {
 		console.log("readingTask 被点击")
+		getReadingActivityChartsData(0)
 	},
 	readingActivity: function () {
 		console.log("readingActivity 被点击")
+		getReadingActivityChartsData(1)
 	},
 }
 
@@ -676,13 +703,25 @@ window.onload = function () {
 		getExamTimesChartsData(0)
 		getReadingsPerStudentTab(0)
 		handleToggleMonthBtnClick()
-		readingActivityCharts()
+		// readingActivityCharts()
+		getReadingActivityChartsData(0)
+		getReadingActivityChartsData(0)
 		last120DayCharts()
 		getTaskData()
 		getActivityHotRank()
 		monthlyTestCharts()
 		getSchoolRank()
+	}
+
+
+	/**
+	 * 初始化一次的信息
+	 */
+	function initOnce() {
 		initProperties()
+		handleDialogBtnClick()
+		handleShowDialogBtnClick()
+		handleExportFileBtnClick()
 	}
 
 	/**
@@ -691,4 +730,32 @@ window.onload = function () {
 	function initProperties() {
 		$(".month-selected").val(dateUtils.dateFormat(dateUtils.getTimeStamp(), "yyyy-MM"))
 	}
+}
+
+
+/**
+ * dialog关闭事件
+ */
+function handleDialogBtnClick() {
+	$(".x-dialog-close-btn").on("click", function () {
+		$(this).parents(".x-dialog-mask").toggle();
+	})
+}
+
+/**
+ * 显示对话框
+ */
+function handleShowDialogBtnClick() {
+	$(".indicator-desc").on("click", function () {
+		$(".x-dialog-mask").toggle();
+	})
+}
+
+/**
+ * 导出文件按钮被点击
+ */
+function handleExportFileBtnClick() {
+	$(".export-file-btn").on("click", function () {
+		//todo 导出文件按钮被点击
+	})
 }

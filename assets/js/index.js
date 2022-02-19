@@ -352,7 +352,11 @@ function monthlyTestCharts(categoryList, data) {
 			// data: [4, 4, 3, 4, 5],
 			data: data,
 			pointPlacement: 'on'
-		}]
+		}],
+		exporting: {enabled: false},
+		credits: {
+			enabled: false // 禁用版权信息
+		},
 	});
 }
 

@@ -98,7 +98,7 @@ function handleDayClick() {
 	$(".x-month-picker-body").off().on("click", ".x-month-picker-item>span", function () {
 		var __dataMonth = $(this).parents(".x-month-picker-item").attr("data-date");
 		var __dataYear = monthPickerWrapEl.find(".x-month-year-txt").text();
-		$(monthPicker__this).val(__dataYear + "-" + __dataMonth);
+		$(monthPicker__this).val(__dataYear + "-" + __dataMonth).change();
 		monthPickerWrapEl.hide();
 	});
 }

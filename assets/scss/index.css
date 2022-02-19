@@ -176,7 +176,7 @@ body {
           margin-top: 0.2rem; }
         #app .container .general-info .reading-activity .reading-activity-tab, #app .container .general-info .reading-activity .reading-task-tab {
           margin-top: 0.2rem; }
-        #app .container .general-info .reading-activity .reading-task-tab .reading-task-list {
+        #app .container .general-info .reading-activity .reading-task-tab .reading-task-list, #app .container .general-info .reading-activity .reading-task-tab .reading-activity-list {
           width: 6.8rem;
           height: 1.4rem; }
       #app .container .general-info .common-activity-list .common-activity-item {

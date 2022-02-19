@@ -39,7 +39,7 @@
 		<div class="select-info-left">
 			<div class="time-select-wrap">
 				<span class="time-txt">时间:</span>
-				<input type="text" onclick="monthPicker(this)" class="x-input-inner month-selected" placeholder="请选择月份">
+				<input type="text" onclick="monthPicker(this)" class="x-input-inner month-selected" placeholder="请选择月份" readonly="readonly">
 			</div>
 			<div class="grade-select-wrap">
 				<span class="grade-txt">查询:</span>
@@ -162,7 +162,7 @@
 					<div class="common-info-wrap-header">
 						<div class="common-info-title">生均阅读量走势图</div>
 						<!--<label onclick="switchClick(this)" class="x-switch toggle-time" data-value="true"></label>-->
-						<div class="toggle-time">
+						<div class="toggle-time average-student-type" data-aveStuType="0">
 							<div class="toggle-item item-three active-toggle-item" data-toggle-type="last30Days">最近30天
 							</div>
 							<div class="toggle-item item-four" data-toggle-type="lastFourMonth">最近四个月</div>
@@ -202,8 +202,8 @@
 				<div class="common-info-wrap reading-activity">
 					<div class="common-info-wrap-header">
 						<div class="common-info-title">阅读任务综合报表</div>
-						<div class="toggle-time">
-							<div class="toggle-item item-three active-toggle-item" data-toggle-type="readingTask">阅读任务
+						<div class="toggle-time reading-type" data-readingComplexType="0">
+							<div class="toggle-item item-three active-toggle-item" data-toggle-type="readingTask" >阅读任务
 							</div>
 							<div class="toggle-item item-four" data-toggle-type="readingActivity">阅读活动</div>
 						</div>
@@ -233,6 +233,20 @@
 						</div>
 						<!--表格列表-->
 						<div class="x-list reading-task-list">
+							<div class="x-no-data">暂无数据</div>
+						</div>
+					</div>
+					<div class="x-table-list">
+						<!--表格头部-->
+						<div class="x-header-wrap">
+							<div class="x-item-header">时间</div>
+							<div class="x-item-header">年段</div>
+							<div class="x-item-header">活动次数</div>
+							<div class="x-item-header">通过率</div>
+							<div class="x-item-header">作品上传数</div>
+						</div>
+						<!--表格列表-->
+						<div class="x-list reading-activity-list ">
 							<div class="x-no-data">暂无数据</div>
 						</div>
 					</div>
